@@ -17,7 +17,6 @@ end
 
 gem 'rails_12factor'
 
-gem 'cowsay'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
