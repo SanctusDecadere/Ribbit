@@ -2,9 +2,22 @@
 <div class="panel right">
 <h1> New to Ribbit? </h1>
 <p>
-	
-	
-</p>
+	<%= form_for (User.new) do |f| %>
+		<% if @user.errors.any? %>
+			<ul>
+			<% @user.errors.full_messages.each do |e| %>
+				<li><%= e %></li>
+				<% end %>
+			</ul>
+		<% end %>
 
+		<%= f.text_field :email, placeholder: "sexy time email" %>
+		<%= f.text_field :name, placeholder: "sexy time name" %>
+		<%= f.text_field :username, placeholder: "sexy time username" %>
+		<%= f.password_field :password, placeholder: "sexy time password" %>
+		<%= f.password_field :password_confirmation, placeholder: "sexy time password" %>
+		<%= f.submit "Create Account" %>
 
-</div>
+		<% end %>
+		</p>
+		</div>
