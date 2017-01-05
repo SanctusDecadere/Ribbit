@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  get 'sessions/create'
+
+  get 'sessions/destroy'
+
+  #get 'new/created'
+
+  #get 'new/create'
+
+  #get 'new/destroy'
+
   resources :users
 
   root to: "users#new"
