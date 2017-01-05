@@ -12,6 +12,7 @@ before_save :create_avatar_url
 	validates :email, presence: true, uniqueness: true, format:{ with: /\A[\w\.+-]+@([\w]+\.)+[a-zA-Z]+\Z/ }
 	validates :username, presence: true, uniqueness: true
 	validates :name, presence: true
+	#validates :gender, presence: true
 
 
 

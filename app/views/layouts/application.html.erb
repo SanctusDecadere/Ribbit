@@ -5,18 +5,28 @@
 	<link rel="stylesheet/less" href="/style.less" />
 	<script src="/less.js"></script>
     <%= csrf_meta_tags %>
-    
   </head>
   <body>
-
-
-
 
 
   	<header>
   		<div class="wrapper">
   			<img src="/gfx/logo.png"/>
   			<span>Twitter Cone</span>
+        <% if current_user %>
+
+        <%= link_to "Log Out", logout_path %>
+
+        <% else %>
+        <%= form_tag sessions_path do %>
+          <%= text_field_tag :username, nil, placeholder: "username" %>
+          <%= password_field_tag :password, nil, placeholder: "password" %>
+          <%= submit_tag "Poke me baby" %>
+        <% end %>
+        <% end %>
+
+
+
   		</div>
   		</header>
 

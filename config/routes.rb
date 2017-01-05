@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
 
-  get 'sessions/create'
+  #get 'sessions/new'
 
-  get 'sessions/destroy'
+  #get 'sessions/create'
+
+  #get 'sessions/destroy'
 
   #get 'new/created'
 
@@ -11,7 +12,11 @@ Rails.application.routes.draw do
 
   #get 'new/destroy'
 
+  resources :sessions
+
   resources :users
+
+  get 'logout', to: 'sessions#destroy', as: 'logout'
 
   root to: "users#new"
   get 'welcome/index'
