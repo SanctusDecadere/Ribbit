@@ -4,7 +4,7 @@ def new
 	@user = User.new
 end
 
-
+#changed (params[:user]) to (user_params)
 
 def create
 	@user = User.new(params[:user])
