@@ -1,9 +1,10 @@
 class Ribbit < ApplicationRecord
-		attr_accessible :content, :user_id
+		attr_accessor :content, :user_id
 
-		default_scope order: "created_at DESC"
+		#default_scope order: "created_at DESC"
+		default_scope {order('created_at DESC')}
 
 		belongs_to :user
 
-		validate :content, length: { maximum: 140 }
+		validates :content, length: { maximum: 140 }
 end
