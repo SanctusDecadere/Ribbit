@@ -1,4 +1,4 @@
-<% if current_user %>
+ <% if current_user %>
 	<%= render 'ribbits/new_form' %>
 <% end %>
 
@@ -8,7 +8,7 @@
 	<h1> Sexy Ribbit Profile</h1>
 	<div class="ribbitwrapper">
 		<img class="avatar" src="<%= @user.avatar_url %>" />
-		<span class="name"><%= @user.name %></span> @<%= @user.username %>
+		<span class="name"> <%= @user.name %> </span> @<%= @user.username %>
 		<p>
 			<%= @user.ribbits.length %> Ribbitsss
 			<span class="spacing"> | xx Followers </span>

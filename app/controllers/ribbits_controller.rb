@@ -7,12 +7,14 @@ class RibbitsController < ApplicationController
 		#ribbit = Ribbit.new(params[:ribbit])
 		@ribbit.user_id = current_user.id
 
-		if @ribbit.save
+		#session[:user_id] = @user.id
 
-		else
-			flash[:error] = "Over 140 characters. Get to the point. ktxbi"
-		end
+
+
+		
+		flash[:error] = "Over 140 characters. Get to the point" unless @ribbit.save
 		redirect_to root_url
+		#redirect_to current_user
 
 	end
 end

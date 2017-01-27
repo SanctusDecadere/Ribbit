@@ -21,10 +21,6 @@ end
 
 
 
-def allowed_params
-	params.require(:ribbit).permit(:full_name, :password, :email, :name, :username, :password_confirmation)
-end
-
 
 
 
@@ -37,6 +33,7 @@ end
 def create
 	@user = User.create(allowed_params)
 	if @user.save
+		session[:user_id] = @user.id
 		redirect_to users_path @user, notice: "This is the second create method"
 	else
 		render 'new'
