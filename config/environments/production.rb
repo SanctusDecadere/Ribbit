@@ -28,7 +28,7 @@ Rails.application.configure do
 
 
 
-#config.assets.precompile = ["ribbits.js"]
+config.assets.precompile = ["ribbits.js"]
 
 
 
