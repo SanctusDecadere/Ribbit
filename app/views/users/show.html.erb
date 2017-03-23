@@ -6,22 +6,58 @@
 
 <div id="ribbits" class="panel left">
 	<h1> Sexy Ribbit Profile</h1>
+	<%= link_to("edit profile", edit_user_path(@user)) if @user == current_user %>
+
 	<div class="ribbitwrapper">
-		<img class="avatar" src="<%= @user.avatar_url %>" />
-		<span class="name"> <%= @user.name %> </span> @<%= @user.username %>
-		<p>
-			<%= @user.ribbits.length %> Ribbitsss
-			<span class="spacing"> | xx Followers </span>
-			<span class="spacing"> | xx Following </span>
+
+	<img class="avatar" src="<%= @user.avatar_url %>" />
+	<span class="name"><%= @user.name %></span> @<%= @username %>
+	<p>
+			<%= @user.ribbits.length %> Sexy Ribbits
+			<span class="spacing">  | <%= @user.followers.length %> Followers </span>
+			<span class="spacing">  |  <%= @user.followeds.length %>  Following </span>
+
+
+
+	
+
+
+		<% if current_user && @user != current_user %>
+			<% if current_user.following? @user %>
+
+			<%= form_for @relationship, method: :delete do |f| %>
+			<%= f.submit "Unfollow" %>
+				<% end %>
+
+			<% else %>
+				<%= form_for @relationship do |f| %>
+					<%= f.hidden_field :followed_id, value: @user.id %>
+					<%= f.submit "Follow" %>
+
+
+					<% end %>
+				<% end %>
+			<% end %>
+
+
 		</p>
 	</div>
 	</div>
 
 	<div class="panel left">
 	<h1> Ribbits</h1>
-	<div class="ribbitWrapper">
-		Sexy Ribbits Coming...
-		</div>
+
+
+	<% @user.ribbits.each do |ribbit| %>
+		<div class="ribbitWrapper">
+			<img class="avatar" src="<%= ribbit.user.avatar_url %>" />
+			<span class="name"> <%= ribbit.user.name %> </span>
+			
+			@<%= ribbit.user.username %>
+			<span class="time"><%= time_ago_in_words(ribbit.created_at) %></span>
+			<p> <%= ribbit.content %> </p>
+			</div>
+		<% end %>
 		</div>
 
 

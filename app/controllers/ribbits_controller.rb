@@ -1,25 +1,32 @@
 class RibbitsController < ApplicationController
+	
 def index
 	@ribbits = Ribbit.all
 	@ribbit = Ribbit.new
 end
 
-
+	def create_params
+		params.require(:ribbit).permit(:content, :user_id)
+	end
 
 	def create
-		@ribbit = Ribbit.new(params[:ribbit].permit(:content, :user_id))
-
-
-		#ribbit = Ribbit.new(params[:ribbit])
+		if @ribbit = Ribbit.new(create_params)
 		@ribbit.user_id = current_user.id
+		@ribbit.save
 
-		#session[:user_id] = @user.id
-		
-		flash[:error] = "Over 140 characters. Get to the point" unless @ribbit.save
+
+		flash[:success] = "Welcome to Sexy Ribbit! You just ribbited bitch!"
+      	redirect_to root_url
+
+      else
+
+		flash[:error] = "Over 140 characters. Get to the point dude!" 
 		redirect_to root_url
-		#redirect_to current_user
 
 	end
+	end
+
+	
+
 end
 
-#4.4 tutorial around 2min in for original code
